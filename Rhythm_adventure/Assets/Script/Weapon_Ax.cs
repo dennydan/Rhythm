@@ -33,21 +33,22 @@ public class Weapon_Ax : MonoBehaviour
     IEnumerator Shoot()
     {
         RaycastHit2D hitInfo = Physics2D.Raycast(ShooterPoint.position, ShooterPoint.right, shootRange);
-
+        AxLineRenderer.SetPosition(0, ShooterPoint.position);
+        
         if(hitInfo)
         {
             if(hitInfo.transform.tag == "Obstacle" && hitInfo.transform != null)
             {
-                particleEffect.transform.position = hitInfo.point;
+                //particleEffect.transform.position = hitInfo.point;
+                particleEffect.Stop();
                 particleEffect.Play();
                 Destroy(hitInfo.transform.gameObject);
             }
-            AxLineRenderer.SetPosition(0, ShooterPoint.position);
+            
             AxLineRenderer.SetPosition(1, hitInfo.point);
         }
         else
         {
-            AxLineRenderer.SetPosition(0, ShooterPoint.position);
             AxLineRenderer.SetPosition(1, ShooterPoint.position + ShooterPoint.right * 100);
         }
         AxLineRenderer.enabled = true;
@@ -55,7 +56,10 @@ public class Weapon_Ax : MonoBehaviour
         AxLineRenderer.enabled = false;
         
     }
-
+    private void disableEffect()
+    {
+    
+    }
     private void OnTriggerEnter2D(Collider2D other)
     {
         if (other.tag == "Obstacle" && WarriorAnim.GetBool("Attacking"))
