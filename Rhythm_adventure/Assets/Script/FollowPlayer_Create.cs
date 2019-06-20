@@ -21,7 +21,6 @@ public class FollowPlayer_Create : MonoBehaviour
         if(other.name == "End")
         {
             Instantiate(other.transform.root.gameObject, other.transform.position, other.transform.rotation);
-            Debug.Log("End");
         }
     }
 }

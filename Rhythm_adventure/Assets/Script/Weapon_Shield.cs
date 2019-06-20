@@ -4,6 +4,7 @@ using UnityEngine;
 
 public class Weapon_Shield : MonoBehaviour
 {
+    [SerializeField] ParticleSystem DefenceEffect;
     // Start is called before the first frame update
     void Start()
     {
@@ -19,6 +20,8 @@ public class Weapon_Shield : MonoBehaviour
     {
         if (other.tag == "Arrow")
         {
+            DefenceEffect.Stop();
+            DefenceEffect.Play();
             Destroy(other.gameObject);
         }
     }

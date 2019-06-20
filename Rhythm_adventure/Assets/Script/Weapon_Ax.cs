@@ -12,10 +12,9 @@ public class Weapon_Ax : MonoBehaviour
     private ParticleSystem particleEffect;
     private LineRenderer AxLineRenderer;
 
-    // Start is called before the first frame update
-    void Start()
+    // Start is called before the first frame 
+    private void Awake()
     {
-      
         particleEffect = ShooterPoint.GetComponent<ParticleSystem>();
         AxLineRenderer = ShooterPoint.GetComponent<LineRenderer>();
         WarriorAnim = GetComponentInParent<Animator>();   
@@ -33,7 +32,7 @@ public class Weapon_Ax : MonoBehaviour
     IEnumerator Shoot()
     {
         RaycastHit2D hitInfo = Physics2D.Raycast(ShooterPoint.position, ShooterPoint.right, shootRange);
-        AxLineRenderer.SetPosition(0, ShooterPoint.position);
+        
         
         if(hitInfo)
         {
@@ -45,10 +44,12 @@ public class Weapon_Ax : MonoBehaviour
                 Destroy(hitInfo.transform.gameObject);
             }
             
+            AxLineRenderer.SetPosition(0, ShooterPoint.position);
             AxLineRenderer.SetPosition(1, hitInfo.point);
         }
         else
         {
+            AxLineRenderer.SetPosition(0, ShooterPoint.position);
             AxLineRenderer.SetPosition(1, ShooterPoint.position + ShooterPoint.right * 100);
         }
         AxLineRenderer.enabled = true;
