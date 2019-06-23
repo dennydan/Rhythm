@@ -73,6 +73,11 @@ namespace RhythmAssets
  
         }
 
+        public void Die()
+        {
+
+        }
+
         private void Flip()
         {
             //Switch facing direction

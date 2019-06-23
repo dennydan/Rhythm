@@ -20,6 +20,10 @@ public class FollowPlayer_Destroy : MonoBehaviour
         if(other.name == "End")
         {
             Destroy(other.transform.parent.gameObject);
+        }else
+        {
+            Destroy(other.gameObject);
         }
+
     }
 }

@@ -22,5 +22,9 @@ public class FollowPlayer_Create : MonoBehaviour
         {
             Instantiate(other.transform.root.gameObject, other.transform.position, other.transform.rotation);
         }
+        else if(other.tag == "Bullet")
+        {
+            Destroy(other.gameObject);
+        }
     }
 }

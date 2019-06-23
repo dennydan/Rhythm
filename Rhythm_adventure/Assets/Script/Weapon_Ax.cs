@@ -7,6 +7,7 @@ public class Weapon_Ax : MonoBehaviour
 {
     public Transform ShooterPoint;
     [SerializeField] private float shootRange = 8.0f;
+    [SerializeField] private GameObject bulletPrefab;
 
     private Animator WarriorAnim;
     private ParticleSystem particleEffect;
@@ -25,11 +26,17 @@ public class Weapon_Ax : MonoBehaviour
     {
         if(Input.GetButtonDown("Fire1"))
         {
-            StartCoroutine(Shoot());
+            Shoot_Bullet();
         }
     }
-    
-    IEnumerator Shoot()
+    //There are two ways to shoot.
+    //Bullet
+     void Shoot_Bullet()
+    {
+        Instantiate(bulletPrefab, ShooterPoint.position, ShooterPoint.rotation);
+    }
+    //LineRenderer
+    IEnumerator Shoot_Line()
     {
         RaycastHit2D hitInfo = Physics2D.Raycast(ShooterPoint.position, ShooterPoint.right, shootRange);
         
