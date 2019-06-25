@@ -9,6 +9,7 @@ public class Character_Health : MonoBehaviour
 //    [SerializeField] private float Health = 1.0f;
     [SerializeField] Slider healthSlider;
     [SerializeField] Image beHitImage;
+    [SerializeField] private float damage = 0.1f;
     // Start is called before the first frame update
     private Animator CharactorAnim_ref;
     private Character_Warrior Character_Ref;
@@ -27,9 +28,9 @@ public class Character_Health : MonoBehaviour
 
     private void OnTriggerEnter2D(Collider2D other)
     {
-        if(other.tag == "Arrow" || other.tag == "Obstacle")
+        if(other.tag == "Arrow" || other.tag == "Obstacle" || other.tag == "Bullet")
         {
-            Character_Ref.Health -= 0.1f;
+            Character_Ref.Health -= damage;
             Destroy(other.gameObject);
             healthSlider.value = Character_Ref.Health;
             
