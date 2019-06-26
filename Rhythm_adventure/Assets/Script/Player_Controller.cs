@@ -7,7 +7,8 @@ public class Player_Controller : MonoBehaviour
 {
     [SerializeField] Character_Warrior CharacterReference;
     [SerializeField] Rigidbody2D CharacterRig;
-
+    [SerializeField] Rhythm_GameMode rhythm_GameMode;
+    
     // Start is called before the first frame update
     void Start()
     {

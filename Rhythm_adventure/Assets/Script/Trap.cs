@@ -1,6 +1,7 @@
 ﻿using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using RhythmAssets;
 
 public class Trap : MonoBehaviour
 {
@@ -15,7 +16,6 @@ public class Trap : MonoBehaviour
     {
         if (other.tag == "Player")
         {
-            Debug.Log("Trap");
             Instantiate(prefabBullet, transform.position, transform.rotation);
         }
     }

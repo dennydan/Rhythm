@@ -19,6 +19,8 @@ public class Bullet : MonoBehaviour
     {
         if(other.tag == "Trap")
         {
+
+            Destroy(transform.gameObject);
             Destroy(other.gameObject);
         }
     }
