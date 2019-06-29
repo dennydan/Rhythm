@@ -6,7 +6,7 @@ namespace RhythmAssets
     {
         //W = warrior
         [SerializeField] private LayerMask W_WhatIsGround;
-        [SerializeField] private float W_MaxSpeed = 10.0f;
+        [SerializeField] private float W_MaxSpeed = 5.0f;
         [SerializeField] private float W_JumpForce = 400.0f;
 
         public float Health = 1.0f;
@@ -19,7 +19,6 @@ namespace RhythmAssets
         const float CeilingRadius = 0.01f;       //Radius of the overlap circle to determine if the player can stand up       
         const float GroundedRadius = 0.2f;       //Radius of the overlap circle to determine if grounded          
         private bool W_FacingRight = true;       //currently facing
-
 
         private void Awake()
         {
@@ -41,6 +40,10 @@ namespace RhythmAssets
             W_Anim.SetBool("Ground", W_Grounded);
             //Set the animation
             W_Anim.SetFloat("VerticalSpeed", W_Rigidbody2D.velocity.y);
+            if(Health <= 0.0f)
+            {
+                Die();
+            }
         }
 
         public void Move(float move, bool jump, bool attack, bool shield)
@@ -50,7 +53,7 @@ namespace RhythmAssets
             W_Anim.SetBool("Shield", shield);
             if (W_Grounded)
             {
-                move = move*W_MaxSpeed;
+                move = move * W_MaxSpeed;
                 W_Anim.SetFloat("Speed", Mathf.Abs(move));
                 W_Rigidbody2D.velocity = new Vector2(move * W_MaxSpeed, W_Rigidbody2D.velocity.y);
                 if (move < 0 && !W_FacingRight)
@@ -70,11 +73,14 @@ namespace RhythmAssets
                     W_Rigidbody2D.AddForce(new Vector2(0.0f, W_JumpForce));
                 }
             }
- 
+
         }
 
         public void Die()
         {
+            //Play die animation and logic
+            Debug.Log("Die");
+            W_MaxSpeed = 0.0f;
 
         }
 

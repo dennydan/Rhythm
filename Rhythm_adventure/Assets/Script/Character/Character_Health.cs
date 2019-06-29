@@ -10,13 +10,12 @@ public class Character_Health : MonoBehaviour
     [SerializeField] Slider healthSlider;
     [SerializeField] Image beHitImage;
     [SerializeField] private float damage = 0.1f;
+    [SerializeField] private Character_Warrior Character_Ref;
+    [SerializeField] private Animator CharactorAnim_ref;
     // Start is called before the first frame update
-    private Animator CharactorAnim_ref;
-    private Character_Warrior Character_Ref;
+
     void Start()
     {
-        CharactorAnim_ref = transform.parent.GetComponent<Animator>();
-        Character_Ref = transform.parent.GetComponent<Character_Warrior>();
         healthSlider.value = Character_Ref.Health;
     }
 
