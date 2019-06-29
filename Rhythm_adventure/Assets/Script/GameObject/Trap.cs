@@ -16,7 +16,7 @@ public class Trap : MonoBehaviour
     {
         if (other.tag == "Player")
         {
-            Instantiate(prefabBullet, transform.position, transform.rotation);
+            Instantiate(prefabBullet, transform.root.position, transform.rotation);
         }
     }
 }

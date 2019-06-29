@@ -10,5 +10,9 @@ namespace RhythmAssets
         {
 
         }
+        public void SaveGame()
+        {
+
+        }
     }
 }

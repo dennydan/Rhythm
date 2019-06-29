@@ -12,6 +12,7 @@ public class Bullet : MonoBehaviour
     void Start()
     {
         Rigid.velocity = Direction * speed;
+        Destroy(transform.gameObject, 0.1f);
     }
 
 
@@ -19,10 +20,7 @@ public class Bullet : MonoBehaviour
     {
         if(other.tag == "Trap")
         {
-
-            Destroy(transform.gameObject);
-            Destroy(other.gameObject);
+           Destroy(other.gameObject);
         }
     }
-
 }
