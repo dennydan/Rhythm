@@ -8,6 +8,7 @@ public class Player_Controller : MonoBehaviour
     [SerializeField] Character_Warrior CharacterReference;
     [SerializeField] Rigidbody2D CharacterRig;
     [SerializeField] Rhythm_GameMode rhythm_GameMode;
+    [SerializeField] Weapon_Ax Weapon_Ref;
     
     // Start is called before the first frame update
     void Start()
@@ -34,7 +35,12 @@ public class Player_Controller : MonoBehaviour
         {
             speed = Mathf.Lerp(speed, 1.0f, 0.01f);
         }
-       
+
+        if (Input.GetButtonDown("Fire1") && !CharacterReference.CharacterDie)
+        {
+            Weapon_Ref.Shoot_Bullet();
+        }
+
         CharacterReference.Move(speed, isJump, isAttack, isShield);
         isJump = false;
     }

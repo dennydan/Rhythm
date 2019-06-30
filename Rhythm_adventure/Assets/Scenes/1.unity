@@ -2863,7 +2863,6 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   Score: 0
-  Music_Main: {fileID: 1383140320}
 --- !u!4 &1383140319
 Transform:
   m_ObjectHideFlags: 0
@@ -4289,6 +4288,18 @@ CanvasRenderer:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 2096958393}
   m_CullTransparentMesh: 0
+--- !u!114 &2109019842 stripped
+MonoBehaviour:
+  m_CorrespondingSourceObject: {fileID: 4664688859947952694, guid: 675a93ca1fdc1284d945b43efa99a6b6,
+    type: 3}
+  m_PrefabInstance: {fileID: 41943389510172797}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 2e6d3986815035d489502ba8f3b54d32, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!1001 &41943389510172797
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -4296,6 +4307,16 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 0}
     m_Modifications:
+    - target: {fileID: 188126984104781875, guid: 675a93ca1fdc1284d945b43efa99a6b6,
+        type: 3}
+      propertyPath: W_MaxSpeed
+      value: 5
+      objectReference: {fileID: 0}
+    - target: {fileID: 188126984104781875, guid: 675a93ca1fdc1284d945b43efa99a6b6,
+        type: 3}
+      propertyPath: W_JumpForce
+      value: 2700
+      objectReference: {fileID: 0}
     - target: {fileID: 41943388221474964, guid: 675a93ca1fdc1284d945b43efa99a6b6,
         type: 3}
       propertyPath: m_LocalPosition.x
@@ -4508,16 +4529,6 @@ PrefabInstance:
       propertyPath: m_LocalScale.y
       value: 1
       objectReference: {fileID: 0}
-    - target: {fileID: 188126984104781875, guid: 675a93ca1fdc1284d945b43efa99a6b6,
-        type: 3}
-      propertyPath: W_MaxSpeed
-      value: 5
-      objectReference: {fileID: 0}
-    - target: {fileID: 188126984104781875, guid: 675a93ca1fdc1284d945b43efa99a6b6,
-        type: 3}
-      propertyPath: W_JumpForce
-      value: 2700
-      objectReference: {fileID: 0}
     - target: {fileID: 41943388187123517, guid: 675a93ca1fdc1284d945b43efa99a6b6,
         type: 3}
       propertyPath: m_IsActive
@@ -4553,6 +4564,16 @@ PrefabInstance:
       propertyPath: rhythm_GameMode
       value: 
       objectReference: {fileID: 1383140318}
+    - target: {fileID: 41943388084781413, guid: 675a93ca1fdc1284d945b43efa99a6b6,
+        type: 3}
+      propertyPath: weapon
+      value: 
+      objectReference: {fileID: 2109019842}
+    - target: {fileID: 41943388084781413, guid: 675a93ca1fdc1284d945b43efa99a6b6,
+        type: 3}
+      propertyPath: Weapon_Ref
+      value: 
+      objectReference: {fileID: 2109019842}
     m_RemovedComponents:
     - {fileID: 41943389615968232, guid: 675a93ca1fdc1284d945b43efa99a6b6, type: 3}
   m_SourcePrefab: {fileID: 100100000, guid: 675a93ca1fdc1284d945b43efa99a6b6, type: 3}

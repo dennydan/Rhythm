@@ -10,6 +10,7 @@ namespace RhythmAssets
         [SerializeField] private float W_JumpForce = 400.0f;
 
         public float Health = 1.0f;
+        public bool CharacterDie = false;
 
         private Animator W_Anim;                 //animator component 
         private Rigidbody2D W_Rigidbody2D;
@@ -19,6 +20,7 @@ namespace RhythmAssets
         const float CeilingRadius = 0.01f;       //Radius of the overlap circle to determine if the player can stand up       
         const float GroundedRadius = 0.2f;       //Radius of the overlap circle to determine if grounded          
         private bool W_FacingRight = true;       //currently facing
+       
 
         private void Awake()
         {
@@ -51,7 +53,7 @@ namespace RhythmAssets
 
             W_Anim.SetBool("Attack", attack);
             W_Anim.SetBool("Shield", shield);
-            if (W_Grounded)
+            if (W_Grounded && !CharacterDie)
             {
                 move = move * W_MaxSpeed;
                 W_Anim.SetFloat("Speed", Mathf.Abs(move));
@@ -73,15 +75,18 @@ namespace RhythmAssets
                     W_Rigidbody2D.AddForce(new Vector2(0.0f, W_JumpForce));
                 }
             }
-
         }
 
         public void Die()
         {
             //Play die animation and logic
-            Debug.Log("Die");
-            W_MaxSpeed = 0.0f;
-
+            if(!CharacterDie)
+            {
+                Debug.Log("Die");
+                CharacterDie = true;
+                W_Anim.SetBool("Die", CharacterDie);
+                W_MaxSpeed = 0.0f;
+            }
         }
 
         private void Flip()

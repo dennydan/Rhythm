@@ -24,14 +24,11 @@ public class Weapon_Ax : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        if(Input.GetButtonDown("Fire1"))
-        {
-            Shoot_Bullet();
-        }
+       
     }
     //There are two ways to shoot.
     //Bullet
-     void Shoot_Bullet()
+    public void Shoot_Bullet()
     {
         Instantiate(bulletPrefab, ShooterPoint.position, ShooterPoint.rotation);
     }
