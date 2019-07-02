@@ -12,13 +12,15 @@ public class Weapon_Ax : MonoBehaviour
     private Animator WarriorAnim;
     private ParticleSystem particleEffect;
     private LineRenderer AxLineRenderer;
+    private Character_Warrior Warrior_Ref;
 
     // Start is called before the first frame 
     private void Awake()
     {
         particleEffect = ShooterPoint.GetComponent<ParticleSystem>();
         AxLineRenderer = ShooterPoint.GetComponent<LineRenderer>();
-        WarriorAnim = GetComponentInParent<Animator>();   
+        WarriorAnim = GetComponentInParent<Animator>();
+        Warrior_Ref = GetComponentInParent<Character_Warrior>();
     }
     private bool isFire = false;
     // Update is called once per frame
@@ -69,8 +71,9 @@ public class Weapon_Ax : MonoBehaviour
     {
         if (other.tag == "Obstacle" && WarriorAnim.GetBool("Attacking"))
         {
+            Warrior_Ref.Rhythm_GM.Score += 10;
             Destroy(other.gameObject);
-            
+            Debug.Log(Warrior_Ref.Rhythm_GM.Score);
         }
     }
 }

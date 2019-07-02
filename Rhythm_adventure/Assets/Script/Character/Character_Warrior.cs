@@ -9,6 +9,7 @@ namespace RhythmAssets
         [SerializeField] private float W_MaxSpeed = 5.0f;
         [SerializeField] private float W_JumpForce = 400.0f;
 
+        public Rhythm_GameMode Rhythm_GM;
         public float Health = 1.0f;
         public bool CharacterDie = false;
 
@@ -82,7 +83,7 @@ namespace RhythmAssets
             //Play die animation and logic
             if(!CharacterDie)
             {
-                Debug.Log("Die");
+                Rhythm_GM.Music_Main.Stop();
                 CharacterDie = true;
                 W_Anim.SetBool("Die", CharacterDie);
                 W_MaxSpeed = 0.0f;
