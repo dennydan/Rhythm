@@ -3,6 +3,7 @@ using System.IO;
 using System.Runtime.Serialization.Formatters.Binary;
 using RhythmAssets;
 
+
 public static class SaveSystem
 {
     public static void SaveData(Character_Warrior warrior)
@@ -26,7 +27,7 @@ public static class SaveSystem
             FileStream stream = new FileStream(path, FileMode.Open);
 
             GameData data = formatter.Deserialize(stream) as GameData;
-
+            stream.Close();
             return data;
         }
         else

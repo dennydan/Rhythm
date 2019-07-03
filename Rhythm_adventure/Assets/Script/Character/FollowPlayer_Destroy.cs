@@ -1,9 +1,11 @@
 ﻿using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using RhythmAssets;
 
 public class FollowPlayer_Destroy : MonoBehaviour
 {
+    [SerializeField] Character_Warrior Warrior_Ref;
     // Start is called before the first frame update
     void Start()
     {
@@ -17,10 +19,15 @@ public class FollowPlayer_Destroy : MonoBehaviour
     }
     private void OnTriggerEnter2D(Collider2D other)
     {
+
         if(other.name == "End")
         {
             Destroy(other.transform.parent.gameObject);
-        }else
+        }else if(other.name == "EndGame")
+        {
+            Warrior_Ref.Die();
+        }
+        else
         {
             Destroy(other.gameObject);
         }

@@ -5,12 +5,18 @@ using RhythmAssets;
 
 public class Player_Controller : MonoBehaviour
 {
-    [SerializeField] Character_Warrior CharacterReference;
+    [SerializeField] Character_Warrior Warrior_Ref;
     [SerializeField] Rigidbody2D CharacterRig;
     [SerializeField] Rhythm_GameMode rhythm_GameMode;
     [SerializeField] Weapon_Ax Weapon_Ref;
+    [SerializeField] Canvas Menu;
     
     // Start is called before the first frame update
+    void Awake()
+    {
+        Menu.enabled = false;
+    }
+
     void Start()
     {
         CharacterRig.centerOfMass = Vector3.zero;
@@ -23,25 +29,38 @@ public class Player_Controller : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-
-        isJump = Input.GetKeyDown(KeyCode.Space); 
-        isAttack = Input.GetMouseButtonDown(0);
-        isShield = Input.GetMouseButtonDown(1);
-        if(isAttack || isShield)
+        if(Warrior_Ref.bControll)
         {
-            speed = Mathf.Lerp(speed, 0.0f, 0.01f);
-        }
-        else
-        {
-            speed = Mathf.Lerp(speed, 1.0f, 0.01f);
-        }
+            isJump = Input.GetKeyDown(KeyCode.Space);
+            isAttack = Input.GetButtonDown("Fire2");
+            isShield = Input.GetButtonDown("Fire3");
+            if (isAttack || isShield)
+            {
+                speed = Mathf.Lerp(speed, 0.0f, 0.01f);
+            }
+            else
+            {
+                speed = Mathf.Lerp(speed, 1.0f, 0.01f);
+            }
 
-        if (Input.GetButtonDown("Fire1") && !CharacterReference.CharacterDie)
-        {
-            Weapon_Ref.Shoot_Bullet();
+            if (Input.GetButtonDown("Fire1") && !Warrior_Ref.CharacterDie)
+            {
+                Weapon_Ref.Shoot_Bullet();
+            }
         }
+        showMenu();
 
-        CharacterReference.Move(speed, isJump, isAttack, isShield);
+        Warrior_Ref.Move(speed, isJump, isAttack, isShield);
         isJump = false;
+    }
+
+    private void showMenu()
+    {
+        if(Input.GetButtonDown("Cancel"))
+        {
+            Warrior_Ref.PauseGame();
+            Debug.Log("Menu");
+        }
+        Menu.enabled = !Warrior_Ref.bControll;
     }
 }

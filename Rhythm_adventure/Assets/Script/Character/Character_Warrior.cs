@@ -12,7 +12,8 @@ namespace RhythmAssets
         public Rhythm_GameMode Rhythm_GM;
         public float Health = 1.0f;
         public bool CharacterDie = false;
-
+        public bool bControll = true;
+        
         private Animator W_Anim;                 //animator component 
         private Rigidbody2D W_Rigidbody2D;
         private bool W_Grounded;                 //Warrior is grounded or not.
@@ -21,10 +22,13 @@ namespace RhythmAssets
         const float CeilingRadius = 0.01f;       //Radius of the overlap circle to determine if the player can stand up       
         const float GroundedRadius = 0.2f;       //Radius of the overlap circle to determine if grounded          
         private bool W_FacingRight = true;       //currently facing
-       
 
         private void Awake()
         {
+            GameData data = SaveSystem.LoadData(this);
+            Rhythm_GM.Score = data.Score;
+            Debug.Log(Rhythm_GM.Score);
+
             W_CeilingCheck = transform.Find("CeilingCheck");
             W_GroundCheck = transform.Find("GroundCheck");
             W_Anim = GetComponent<Animator>();
@@ -83,11 +87,43 @@ namespace RhythmAssets
             //Play die animation and logic
             if(!CharacterDie)
             {
-                Rhythm_GM.Music_Main.Stop();
                 CharacterDie = true;
                 W_Anim.SetBool("Die", CharacterDie);
-                W_MaxSpeed = 0.0f;
+
+                StopGame();
+                SaveSystem.SaveData(this);
             }
+        }
+
+        float MaxSpeed_Register;
+
+        public void PauseGame()
+        {
+            if(bControll)
+            {
+                bControll = false;
+                MaxSpeed_Register = W_MaxSpeed;
+                W_MaxSpeed = 0.0f;
+                Rhythm_GM.Music_Main.Pause();
+            }
+        }
+
+        public void ContinueGame()
+        {
+            if(!bControll)
+            {
+                bControll = true;
+                Rhythm_GM.Music_Main.Play();
+                W_MaxSpeed = MaxSpeed_Register;
+            }
+        }
+
+        public void StopGame()
+        { 
+            // Leave logic
+            MaxSpeed_Register = W_MaxSpeed;
+            W_MaxSpeed = 0.0f;
+            Rhythm_GM.Music_Main.Stop();
         }
 
         private void Flip()
