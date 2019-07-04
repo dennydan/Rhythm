@@ -12,7 +12,6 @@ namespace RhythmAssets
         public Rhythm_GameMode Rhythm_GM;
         public float Health = 1.0f;
         public bool CharacterDie = false;
-        public bool bControll = true;
         
         private Animator W_Anim;                 //animator component 
         private Rigidbody2D W_Rigidbody2D;
@@ -25,6 +24,7 @@ namespace RhythmAssets
 
         private void Awake()
         {
+            //initialization
             GameData data = SaveSystem.LoadData(this);
             Rhythm_GM.Score = data.Score;
             Debug.Log(Rhythm_GM.Score);
@@ -35,6 +35,7 @@ namespace RhythmAssets
             W_Rigidbody2D = GetComponent<Rigidbody2D>();
             W_Rigidbody2D.centerOfMass = Vector3.zero;
         }
+
         private void FixedUpdate()
         {
             W_Grounded = false;
@@ -90,40 +91,15 @@ namespace RhythmAssets
                 CharacterDie = true;
                 W_Anim.SetBool("Die", CharacterDie);
 
-                StopGame();
+                Show_Statistics();
+                Rhythm_GM.Music_Main.Stop();
                 SaveSystem.SaveData(this);
             }
         }
 
-        float MaxSpeed_Register;
-
-        public void PauseGame()
+        void Show_Statistics()
         {
-            if(bControll)
-            {
-                bControll = false;
-                MaxSpeed_Register = W_MaxSpeed;
-                W_MaxSpeed = 0.0f;
-                Rhythm_GM.Music_Main.Pause();
-            }
-        }
 
-        public void ContinueGame()
-        {
-            if(!bControll)
-            {
-                bControll = true;
-                Rhythm_GM.Music_Main.Play();
-                W_MaxSpeed = MaxSpeed_Register;
-            }
-        }
-
-        public void StopGame()
-        { 
-            // Leave logic
-            MaxSpeed_Register = W_MaxSpeed;
-            W_MaxSpeed = 0.0f;
-            Rhythm_GM.Music_Main.Stop();
         }
 
         private void Flip()

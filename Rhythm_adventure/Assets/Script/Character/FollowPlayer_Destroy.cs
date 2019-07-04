@@ -6,6 +6,7 @@ using RhythmAssets;
 public class FollowPlayer_Destroy : MonoBehaviour
 {
     [SerializeField] Character_Warrior Warrior_Ref;
+
     // Start is called before the first frame update
     void Start()
     {
@@ -25,7 +26,7 @@ public class FollowPlayer_Destroy : MonoBehaviour
             Destroy(other.transform.parent.gameObject);
         }else if(other.name == "EndGame")
         {
-            Warrior_Ref.Die();
+            // Logic of EndGame 
         }
         else
         {
