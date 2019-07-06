@@ -25,10 +25,6 @@ namespace RhythmAssets
         private void Awake()
         {
             //initialization
-            GameData data = SaveSystem.LoadData(this);
-            Rhythm_GM.Score = data.Score;
-            Debug.Log(Rhythm_GM.Score);
-
             W_CeilingCheck = transform.Find("CeilingCheck");
             W_GroundCheck = transform.Find("GroundCheck");
             W_Anim = GetComponent<Animator>();
@@ -93,7 +89,7 @@ namespace RhythmAssets
 
                 Show_Statistics();
                 Rhythm_GM.Music_Main.Stop();
-                SaveSystem.SaveData(this);
+                SaveSystem.SaveData(Rhythm_GM);
             }
         }
 
