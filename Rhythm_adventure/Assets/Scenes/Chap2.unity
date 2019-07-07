@@ -4070,7 +4070,7 @@ PrefabInstance:
     - target: {fileID: 3891817296022204506, guid: 4ca82db6a55a95143b40f74e870a2af6,
         type: 3}
       propertyPath: Chap
-      value: 0
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 3891817296022204506, guid: 4ca82db6a55a95143b40f74e870a2af6,
         type: 3}

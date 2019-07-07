@@ -3,7 +3,6 @@
 [System.Serializable]
 public class GameData
 {
-
     public int chap;
     public int Level;
     public LevelData[,] levelDatas = new LevelData[5,5];
