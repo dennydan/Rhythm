@@ -606,6 +606,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 498972357e4931641b52621c7b355fbf, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  levelName: 
 --- !u!1 &1570837976
 GameObject:
   m_ObjectHideFlags: 0
@@ -834,14 +835,14 @@ MonoBehaviour:
     m_PersistentCalls:
       m_Calls:
       - m_Target: {fileID: 1514516945}
-        m_MethodName: StartGame
-        m_Mode: 1
+        m_MethodName: Load_Level
+        m_Mode: 5
         m_Arguments:
           m_ObjectArgument: {fileID: 0}
           m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
           m_IntArgument: 0
           m_FloatArgument: 0
-          m_StringArgument: 
+          m_StringArgument: StoryMaps
           m_BoolArgument: 0
         m_CallState: 2
     m_TypeName: UnityEngine.UI.Button+ButtonClickedEvent, Unity.ugui, Version=1.0.0.0,
