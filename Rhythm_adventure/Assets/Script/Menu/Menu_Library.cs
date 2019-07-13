@@ -6,8 +6,10 @@ using UnityEngine.SceneManagement;
 public class Menu_Library : MonoBehaviour
 {
     public string levelName = "";
+    public GameObject[] chapPenal;
 
-    [SerializeField] GameObject[] chapPenal;
+    public int chapter = 0;
+   
 
 //    public Scene B = SceneManager.GetActiveScene();
     
@@ -22,9 +24,9 @@ public class Menu_Library : MonoBehaviour
         SceneManager.LoadScene(sceneName);
     }
 
-    private int chapter = 0;
+    
     private int lastChapter = 1;
-    public void Switch_Chap(int chapter, bool isNextChap)
+    public void Switch_Chap(bool isNextChap)
     {
         // 0 equal chapter 1
         if(isNextChap)
@@ -32,7 +34,8 @@ public class Menu_Library : MonoBehaviour
             if(chapter != lastChapter)
             {
                 chapPenal[chapter].SetActive(false);
-                chapPenal[chapter + 1].SetActive(true);
+                chapter++;
+                chapPenal[chapter].SetActive(true);
             }
         }
         else
@@ -40,7 +43,8 @@ public class Menu_Library : MonoBehaviour
             if (chapter != 0)
             {
                 chapPenal[chapter].SetActive(false);
-                chapPenal[chapter - 1].SetActive(true);
+                chapter--;
+                chapPenal[chapter].SetActive(true);
             }
         }
     }
