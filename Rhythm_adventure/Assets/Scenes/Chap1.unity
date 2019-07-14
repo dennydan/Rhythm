@@ -708,7 +708,8 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   GM_Ref: {fileID: 1383140318}
   isPause: 0
-  Panel: {fileID: 718590090}
+  Pause_Panel: {fileID: 718590090}
+  Statistics_Panel: {fileID: 531756732}
 --- !u!1 &411394572
 GameObject:
   m_ObjectHideFlags: 0
@@ -1043,7 +1044,7 @@ GameObject:
   - component: {fileID: 531756735}
   - component: {fileID: 531756734}
   m_Layer: 5
-  m_Name: End_Panel
+  m_Name: Statistics_Panel
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -4799,11 +4800,6 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 0}
     m_Modifications:
-    - target: {fileID: 3891817296022204505, guid: 4ca82db6a55a95143b40f74e870a2af6,
-        type: 3}
-      propertyPath: m_Name
-      value: WorldSetting
-      objectReference: {fileID: 0}
     - target: {fileID: 3891817296022204506, guid: 4ca82db6a55a95143b40f74e870a2af6,
         type: 3}
       propertyPath: Chap
@@ -4818,6 +4814,11 @@ PrefabInstance:
         type: 3}
       propertyPath: Music_Main
       value: 
+      objectReference: {fileID: 0}
+    - target: {fileID: 3891817296022204505, guid: 4ca82db6a55a95143b40f74e870a2af6,
+        type: 3}
+      propertyPath: m_Name
+      value: WorldSetting
       objectReference: {fileID: 0}
     - target: {fileID: 3891817296022204507, guid: 4ca82db6a55a95143b40f74e870a2af6,
         type: 3}

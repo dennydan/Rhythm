@@ -18,8 +18,7 @@ public class Character_Health : MonoBehaviour
     {
         healthSlider.value = Character_Ref.Health;
     }
-    public float deltaTime;
-   // float fps;
+
     // Update is called once per frame
     void Update()
     {

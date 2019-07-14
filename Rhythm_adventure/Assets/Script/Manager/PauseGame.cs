@@ -9,8 +9,8 @@ public class PauseGame : MonoBehaviour
     // Start is called before the first frame update
     [SerializeField] Rhythm_GameMode GM_Ref;  
     public bool isPause = false;
-    [SerializeField] GameObject Panel;
-
+    [SerializeField] GameObject Pause_Panel;
+    [SerializeField] GameObject Statistics_Panel;
     // Update is called once per frame
     void Update()
     {
@@ -25,20 +25,28 @@ public class PauseGame : MonoBehaviour
                 Pause();
             }
         }
+        if (GM_Ref.isGameOver)
+        {
+            Show_Statistics();
+            GM_Ref.isGameOver = false;
+        }
     }
 
     // Pause gmae
     void Pause()
     {
-        Panel.SetActive(true);
-        isPause = true;
-        GM_Ref.Music_Main.Pause();
-        Time.timeScale = 0.0f;
+        if(!GM_Ref.isGameOver)
+        {
+            Pause_Panel.SetActive(true);
+            isPause = true;
+            GM_Ref.Music_Main.Pause();
+            Time.timeScale = 0.0f;
+        }
     }
 
     public void Resume()
     { 
-        Panel.SetActive(false);
+        Pause_Panel.SetActive(false);
         isPause = false;
         GM_Ref.Music_Main.Play(); 
         Time.timeScale = 1.0f;
@@ -50,7 +58,12 @@ public class PauseGame : MonoBehaviour
         Time.timeScale = 1.0f;
         SceneManager.LoadScene("MainMenu");
     }
-       
+
+    void Show_Statistics()
+    {
+        Statistics_Panel.SetActive(true);
+    }
+
     //Quit game
     public void Exit()
     {

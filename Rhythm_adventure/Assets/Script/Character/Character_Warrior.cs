@@ -88,6 +88,7 @@ namespace RhythmAssets
                 W_Anim.SetBool("Die", CharacterDie);
 
                 Show_Statistics();
+                Rhythm_GM.isGameOver = true;
                 Rhythm_GM.Music_Main.Stop();
                 SaveSystem.SaveData(Rhythm_GM);
             }
