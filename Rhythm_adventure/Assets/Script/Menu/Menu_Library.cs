@@ -6,9 +6,9 @@ using UnityEngine.SceneManagement;
 public class Menu_Library : MonoBehaviour
 {
     public string levelName = "";
-    public GameObject[] chapPenal;
+    [SerializeField] GameObject[] chapPenal;
 
-    public int chapter = 0;
+    private int chapter = 0;
    
 
 //    public Scene B = SceneManager.GetActiveScene();
