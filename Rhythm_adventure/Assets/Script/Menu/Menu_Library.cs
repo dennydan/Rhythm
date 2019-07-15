@@ -5,23 +5,31 @@ using UnityEngine.SceneManagement;
 
 public class Menu_Library : MonoBehaviour
 {
-    public string levelName = "";
+    [SerializeField] GameObject Loading_Panel;
     [SerializeField] GameObject[] chapPenal;
 
     private int chapter = 0;
-   
-
-//    public Scene B = SceneManager.GetActiveScene();
-    
+    AsyncOperation Async;
     // Start is called before the first frame update
     void Start()
     {
-        
+
     }
 
     public void Load_Level(string sceneName)
     {
-        SceneManager.LoadScene(sceneName);
+        if(sceneName != "")
+        {
+            Loading_Panel.SetActive(true);
+            StartCoroutine(Loading_Scene(sceneName));
+        }
+    }
+
+    IEnumerator Loading_Scene(string sceneName)
+    {
+        yield return new WaitForEndOfFrame();
+        Async = SceneManager.LoadSceneAsync(sceneName);
+        yield return Async;
     }
 
     
